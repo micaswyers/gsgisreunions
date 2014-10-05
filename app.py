@@ -3,12 +3,11 @@ import json
 import requests
 
 
-from secrets import CLIENT_ID
 
 app = Flask(__name__)
 
 
-r = requests.get("https://api.instagram.com/v1/tags/gsgisreunions/media/recent?client_id=%s" % CLIENT_ID)
+r = requests.get("https://api.instagram.com/v1/tags/gsgisreunions/media/recent?client_id=b1da9d7eeb1a4f638234ff7d846b008a")
 
 urls_list = map(lambda x: x['images']['standard_resolution']['url'], r.json()['data'])
 
