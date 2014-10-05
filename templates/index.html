@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/main.css">
+        <title>#gsgisreunions</title>
+    </head>
+    <body>
+        <header>
+           <ul>
+            <li><h1>#gsgisreunions</h1></li>
+            <li class="hidden">
+                <a href="http://governorsschoolfoundation.org/donate">
+                Donate
+                </a>
+            </li>
+           </ul>
+        </header>
+        <div class="main_container">
+            {% for url in urls_list %}
+                <p>
+                    <img src="{{ url }}">
+                </p>
+            {% endfor %}
+        </div>
+    <!-- Insert the scripts!  -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="../static/myjs.js"></script>
+    </body>
+</html>
