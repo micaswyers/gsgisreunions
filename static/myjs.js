@@ -5,16 +5,6 @@ function makeNewImgTags(urls_list) {
 }
 $(".button_container").append('<button type="button" id="more">More</button>');
 
-$(window).scroll(function() {
-if ($(this).scrollTop() > 1){
-        $('header').addClass("sticky");
-    $(".hidden").show();
-          }
-  else{
-          $('header').removeClass("sticky");
-        $(".hidden").hide();
-            }
-});
 
 $("#more").click (function(e) {
     e.preventDefault();
