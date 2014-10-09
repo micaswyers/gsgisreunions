@@ -3,9 +3,10 @@ import json
 import os
 import requests
 
+import config
 
 app = Flask(__name__)
-INITIAL_REQUEST_URL="https://api.instagram.com/v1/tags/gsgisreunions/media/recent?client_id=b1da9d7eeb1a4f638234ff7d846b008a"
+INITIAL_REQUEST_URL="https://api.instagram.com/v1/tags/gsgisreunions/media/recent?client_id=%s" % config.CLIENT_ID
 NEXT_URL = None
 def call_api(request=INITIAL_REQUEST_URL):
     global NEXT_URL
