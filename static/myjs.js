@@ -3,8 +3,7 @@ function makeNewImgTags(urls_list) {
         $(".main_container").append("<img src='" + urls_list[i] + "'>")
     }
 }
-
-$(document.body).append('<button type="button" id="more">More</button>');
+$(".button_container").append('<button type="button" id="more">More</button>');
 
 $(window).scroll(function() {
 if ($(this).scrollTop() > 1){

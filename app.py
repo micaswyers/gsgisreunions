@@ -10,7 +10,10 @@ NEXT_URL = None
 def call_api(request=INITIAL_REQUEST_URL):
     global NEXT_URL
     r = requests.get(request)
-    NEXT_URL = r.json()['pagination']['next_url']
+    if 'next_url' in r.json()['pagination'].keys():
+        NEXT_URL = r.json()['pagination']['next_url']
+    else:
+        NEXT_URL = False
     urls_list = map(lambda x: x['images']['standard_resolution']['url'], r.json()['data'])
 
     return urls_list
@@ -18,7 +21,12 @@ def call_api(request=INITIAL_REQUEST_URL):
 @app.route("/", )
 def index():
     urls_list =  call_api()
-    return render_template('index.html', urls_list=urls_list)
+    if NEXT_URL:
+        is_next = True
+    else:
+        is_next = False
+
+    return render_template('index.html', urls_list=urls_list, is_next=is_next)
 
 @app.route("/next", methods=["GET"])
 def get_more_images():
