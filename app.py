@@ -5,14 +5,13 @@ import requests
 
 
 app = Flask(__name__)
-INITIAL_REQUEST_URL="https://api.instagram.com/v1/tags/gsgisreunions/media/recent?client_id=b1da9d7eeb1a4f638234ff7d846b008a"
-NEXT_URL = None
+INITIAL_REQUEST_URL="https://api.instagram.com/v1/tags/frenchbulldog/media/recent?client_id=b1da9d7eeb1a4f638234ff7d846b008a"
 
 def call_api(request=INITIAL_REQUEST_URL):
     r = requests.get(request)
-    global NEXT_URL
-    NEXT_URL = r.json()['pagination']['next_url']
-    return map(lambda x: x['images']['standard_resolution']['url'], r.json()['data'])
+
+    urls_list = map(lambda x: x['images']['standard_resolution']['url'], r.json()['data'])
+    return urls_list
 
 @app.route("/", )
 def index():
@@ -21,11 +20,7 @@ def index():
 
 @app.route("/next", )
 def get_more_images():
-    global NEXT_URL
-    urls_list = call_api(NEXT_URL)
-    return render_template('index.html', urls_list=urls_list)
-
-
+    pass
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
