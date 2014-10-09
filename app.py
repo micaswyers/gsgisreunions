@@ -4,7 +4,7 @@ import os
 import requests
 
 app = Flask(__name__)
-INITIAL_REQUEST_URL="https://api.instagram.com/v1/tags/gsgisreunions/media/recent?client_id=%s" %  os.environ['ClIENT_ID']
+INITIAL_REQUEST_URL="https://api.instagram.com/v1/tags/gsgisreunions/media/recent?client_id=" + os.environ['ClIENT_ID']
 NEXT_URL = None
 def call_api(request=INITIAL_REQUEST_URL):
     global NEXT_URL
