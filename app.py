@@ -33,7 +33,10 @@ def index():
 def get_more_images():
     urls_list = call_api(NEXT_URL)
     return json.dumps(
-        {"urls": urls_list}
+        {
+            "urls": urls_list,
+            "is_next": NEXT_URL,
+        }
     )
 
 if __name__ == "__main__":

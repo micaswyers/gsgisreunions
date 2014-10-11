@@ -15,8 +15,12 @@ $("#more").click (function(e) {
     }).done(function(response) {
         var returned_dict = $.parseJSON(response);
         var new_urls_list = returned_dict['urls'];
+        var is_next = returned_dict['is_next'];
         console.log("Data is back");
         makeNewImgTags(new_urls_list);
-        console.log("Did you ruN?");
+        if ( is_next == false) {
+            $("#more").hide();
+        };
+
     })
 });
